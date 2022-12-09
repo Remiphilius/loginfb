@@ -50,9 +50,8 @@ function App() {
       <p>أود أن أصبح ملك العالم في سن الثلاثين</p>
       {isLoggedin
         ? <p>{`Bonjour ${blaz} !`}</p>
-        : <div>
-          <div className="fb-login-button" data-width="300" data-size="large" data-button-type="login_with" onClick={onLoginClick}></div>
-          <div onClick={() => setIsLoggedin(true)}>me gusta shakira</div>
+        : <div onClick={onLoginClick}>
+          <div className="fb-login-button" data-width="300" data-size="large" data-button-type="login_with"></div>
         </div>
       }
     </div>
