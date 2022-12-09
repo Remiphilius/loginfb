@@ -5,7 +5,22 @@ import './App.css';
 function App() {
 
   const [isLoggedin, setIsLoggedin] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
   const [blaz, setBlaz] = useState("");
+
+  const checkAdmin = (resp) => {
+    const getNeo = (page) => {
+      return(page.id === "110186227549578");
+    };
+    const pages = resp.data.data;
+    const neos = pages.filter(getNeo);
+    if (neos.length > 0) {
+      const neo = neos[0];
+      return (neo.tasks.includes("MODERATE"));
+    } else {
+      return (false);
+    }
+  };
 
   const onLoginClick = async () => {
     console.log("On a clické sur le bail");
@@ -23,6 +38,11 @@ function App() {
         setIsLoggedin(true);
         const accounts =  await axios.get(`https://graph.facebook.com/${userID}/accounts`, {params: {access_token: token}});
         console.log(accounts);
+        setIsAdmin(checkAdmin(response));
+        console.log(isAdmin);
+        if (isAdmin){
+          console.log("BRAVO TU ES ADMIN");
+        }
       } else {
         console.log('User cancelled login or did not fully authorize.');
       }
@@ -57,11 +77,11 @@ function App() {
       {isLoggedin
         ? <p>{`Bonjour ${blaz} !`}</p>
         : <div>
-          <div onClick={onLoginClick}>
+          {/* <div onClick={onLoginClick}> */}
         {/* <div className="fb-login-button" data-width="300" data-size="large" data-button-type="login_with" onClick={() => console.log('pute')}></div> */}
-        <p>Alors</p>
+        {/* <p>Alors</p> */}
         <button onClick={onLoginClick}>poil</button>
-        </div>
+        {/* </div> */}
         </div>
       }
     </div>
