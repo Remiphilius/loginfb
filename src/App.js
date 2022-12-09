@@ -48,11 +48,11 @@ function App() {
   return (
     <div>
       <p>أود أن أصبح ملك العالم في سن الثلاثين</p>
-      {/* <p>Vive le vent d'hiver</p> */}
+      <p>Vive le vent d'hiver</p>
       {isLoggedin
         ? <p>{`Bonjour ${blaz} !`}</p>
         :// : <div>
-        <div className="fb-login-button" data-width="300" data-size="large" data-button-type="login_with" onClick={() => setIsLoggedin(true)}></div>
+        <div className="fb-login-button" data-width="300" data-size="large" onClick={() => setIsLoggedin(true)}></div>
       }
     </div>
   );
