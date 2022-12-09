@@ -17,6 +17,7 @@ function App() {
     const neos = pages.filter(getNeo);
     console.log(neos);
     console.log(neos.length);
+    console.log(neos.length > 0);
     if (neos.length > 0) {
       const neo = neos[0];
       console.log(neo);
@@ -77,7 +78,7 @@ function App() {
   return (
     <div>
       <p>أود أن أصبح ملك العالم في سن الثلاثين</p>
-      <p>me gusta Shakira</p>
+      {/* <p>me gusta Shakira</p> */}
       {isLoggedin
         ? <p>{`Bonjour ${blaz} !`}</p>
         : <div>
