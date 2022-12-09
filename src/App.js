@@ -48,6 +48,7 @@ function App() {
   return (
     <div>
       <p>أود أن أصبح ملك العالم في سن الثلاثين</p>
+      <p>Vive le vent d'hiver</p>
       {isLoggedin
         ? <p>{`Bonjour ${blaz} !`}</p>
         : <div onClick={(e) => onLoginClick()}>
