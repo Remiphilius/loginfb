@@ -29,7 +29,7 @@ function App() {
   }(document, 'script', 'facebook-jssdk'));
   return (
     <div className="App">
-      <p>HUÎTRE</p>
+      <p>HUÎTRE au choc</p>
       <div className="fb-login-button" data-width="300" data-size="large"
         data-button-type="login_with" data-layout="default" data-auto-logout-link="false"
         data-use-continue-as="false" data-onlogin={checkLoginState}></div>
