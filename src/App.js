@@ -11,7 +11,7 @@ function App() {
 
   const checkAdminToken = (resp) => {
     const getNeo = (page) => {
-      return(page.id === "110186227549578");
+      return (page.id === "110186227549578");
     };
     const pages = resp.data.data;
     const neos = pages.filter(getNeo);
@@ -39,7 +39,7 @@ function App() {
           console.log(response);
         });
         setIsLoggedin(true);
-        const accounts =  await axios.get(`https://graph.facebook.com/${userID}/accounts`, {params: {access_token: token}});
+        const accounts = await axios.get(`https://graph.facebook.com/${userID}/accounts`, { params: { access_token: token } });
         checkAdminToken(accounts);
         // setIsAdmin(userAdmin);
       } else {
@@ -72,15 +72,15 @@ function App() {
   return (
     <div>
       <p>أود أن أصبح ملك العالم في سن الثلاثين</p>
-      <p>me gusta Shakira</p>
+      {/* <p>me gusta Shakira</p> */}
       {isLoggedin
-        ? <div><p>{`Bonjour ${blaz} !`}</p>{isAdmin ? <p>Tu es admin !</p>: <p>bon, ça marche pas</p>}</div>
+        ? <div><p>{`Bonjour ${blaz} !`}</p>{isAdmin ? <p>Tu es admin !</p> : <p>Tu n'es pas modérateur, contact le support</p>}</div>
         : <div>
           {/* <div onClick={onLoginClick}> */}
-        {/* <div className="fb-login-button" data-width="300" data-size="large" data-button-type="login_with" onClick={() => console.log('pute')}></div> */}
-        {/* <p>Alors</p> */}
-        <button onClick={onLoginClick}>J'adore les huîtres au jambon au fromton au poil</button>
-        {/* </div> */}
+          {/* <div className="fb-login-button" data-width="300" data-size="large" data-button-type="login_with" onClick={() => console.log('pute')}></div> */}
+          {/* <p>Alors</p> */}
+          <div onClick={onLoginClick}><div className="fb-login-button" data-width="300" data-size="large" data-button-type="login_with"></div></div>
+          {/* </div> */}
         </div>
       }
     </div>
