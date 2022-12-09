@@ -44,7 +44,7 @@ function App() {
   return (
     <div>
       {isLoggedin
-        ? <p>YES</p>
+        ? <p>{`Bonjour ${blaz} !`}</p>
         : <button onClick={onLoginClick}>Login with Facebook</button>}
     </div>
   );
