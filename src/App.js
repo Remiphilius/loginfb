@@ -48,10 +48,9 @@ function App() {
   return (
     <div>
       <p>أود أن أصبح ملك العالم في سن الثلاثين</p>
-      <p>me gusta shakira</p>
       {isLoggedin
         ? <p>{`Bonjour ${blaz} !`}</p>
-        : <button onClick={onLoginClick} />
+        : <div className="fb-login-button" data-width="300" data-size="large" data-button-type="login_with" onClick={onLoginClick} /> 
       }
     </div>
   );
