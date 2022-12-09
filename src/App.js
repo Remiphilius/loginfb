@@ -31,7 +31,7 @@ function App() {
     <div className="App">
       <p>HUÎTRE au choc</p>
       <div className="fb-login-button" data-width="300" data-size="large"
-        data-button-type="login_with" data-layout="default" data-auto-logout-link="false"
+        data-button-type="login_with" data-layout="default" data-auto-logout-link="true"
         data-use-continue-as="false" data-onlogin={checkLoginState}></div>
     </div>
   );
