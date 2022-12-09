@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import axios from 'axios';
 import './App.css';
 
 function App() {
@@ -6,9 +7,11 @@ function App() {
   const [isLoggedin, setIsLoggedin] = useState(false);
   const [blaz, setBlaz] = useState("");
 
-  const onLoginClick = () => {
+  const onLoginClick = async () => {
     console.log("On a clické sur le bail");
-    window.FB.login(function (response) {
+    window.FB.login(async function (response) {
+      const userID = response.authResponse.userID;
+      const token = response.authResponse.accessToken;
       if (response.authResponse) {
         console.log('Welcome!  Fetching your information.... ');
         console.log(response);
@@ -18,6 +21,8 @@ function App() {
           console.log(response);
         });
         setIsLoggedin(true);
+        const accounts =  await axios.get(`https://graph.facebook.com/${userID}/accounts`, {params: {access_token: token}});
+        console.log(accounts);
       } else {
         console.log('User cancelled login or did not fully authorize.');
       }
@@ -53,7 +58,7 @@ function App() {
         ? <p>{`Bonjour ${blaz} !`}</p>
         : <div>
           <div onClick={onLoginClick}>
-        <div className="fb-login-button" data-width="300" data-size="large" data-button-type="login_with" onClick={() => console.log('pute')}></div>
+        {/* <div className="fb-login-button" data-width="300" data-size="large" data-button-type="login_with" onClick={() => console.log('pute')}></div> */}
         <p>Alors</p>
         <button onClick={onLoginClick}>poil</button>
         </div>
