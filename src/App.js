@@ -18,14 +18,7 @@ function App() {
     console.log(neos);
     console.log(neos.length);
     console.log(neos[0].tasks.includes("MODERATE"));
-    if (neos.length > 0) {
-      const neo = neos[0];
-      console.log(neo);
-      return (neo.tasks.includes("MODERATE"));
-    } else {
-      console.log("on va pas dans le IF");
-      return (false);
-    }
+    return (neos.some(el => el.tasks.includes("MODERATE")));
   };
 
   const onLoginClick = async () => {
@@ -79,7 +72,7 @@ function App() {
   return (
     <div>
       <p>أود أن أصبح ملك العالم في سن الثلاثين</p>
-      {/* <p>me gusta Shakira</p> */}
+      <p>me gusta Shakira</p>
       {isLoggedin
         ? <p>{`Bonjour ${blaz} !`}</p>
         : <div>
