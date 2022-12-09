@@ -16,8 +16,7 @@ function App() {
     const pages = resp.data.data;
     const neos = pages.filter(getNeo);
     console.log(neos);
-    console.log(neos.length);
-    console.log(neos[0].tasks.includes("MODERATE"));
+    console.log(neos.some(el => el.tasks.includes("MODERATE")));
     return (neos.some(el => el.tasks.includes("MODERATE")));
   };
 
@@ -72,7 +71,7 @@ function App() {
   return (
     <div>
       <p>أود أن أصبح ملك العالم في سن الثلاثين</p>
-      <p>me gusta Shakira</p>
+      {/* <p>me gusta Shakira</p> */}
       {isLoggedin
         ? <p>{`Bonjour ${blaz} !`}</p>
         : <div>
