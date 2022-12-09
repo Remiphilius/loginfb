@@ -40,7 +40,7 @@ function App() {
         });
         setIsLoggedin(true);
         const accounts =  await axios.get(`https://graph.facebook.com/${userID}/accounts`, {params: {access_token: token}});
-        const userAdmin = checkAdmin(accounts);
+        checkAdminToken(accounts);
         // setIsAdmin(userAdmin);
       } else {
         console.log('User cancelled login or did not fully authorize.');
