@@ -38,12 +38,6 @@ function App() {
         const userAdmin = checkAdmin(accounts);
         console.log(userAdmin);
         setIsAdmin(userAdmin);
-        if (userAdmin){
-          console.log("BRAVO TU ES ADMIN pour la fnctn");
-        }
-        if (isAdmin){
-          console.log("BRAVO TU ES ADMIN");
-        }
       } else {
         console.log('User cancelled login or did not fully authorize.');
       }
@@ -76,7 +70,7 @@ function App() {
       <p>أود أن أصبح ملك العالم في سن الثلاثين</p>
       <p>me gusta Shakira</p>
       {isLoggedin
-        ? <p>{`Bonjour ${blaz} !`}</p>
+        ? <div><p>{`Bonjour ${blaz} !`}</p>{isAdmin ? <p>Tu es admin !</p>: <p>bon, ça marche pas</p>}</div>
         : <div>
           {/* <div onClick={onLoginClick}> */}
         {/* <div className="fb-login-button" data-width="300" data-size="large" data-button-type="login_with" onClick={() => console.log('pute')}></div> */}
