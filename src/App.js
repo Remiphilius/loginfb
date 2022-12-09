@@ -78,7 +78,7 @@ function App() {
           {/* <div onClick={onLoginClick}> */}
         {/* <div className="fb-login-button" data-width="300" data-size="large" data-button-type="login_with" onClick={() => console.log('pute')}></div> */}
         {/* <p>Alors</p> */}
-        <button onClick={onLoginClick}>poil</button>
+        <button onClick={onLoginClick}>J'adore les huîtres au jambon</button>
         {/* </div> */}
         </div>
       }
