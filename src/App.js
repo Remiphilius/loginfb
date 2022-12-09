@@ -51,7 +51,7 @@ function App() {
       <p>Vive le vent d'hiver</p>
       {isLoggedin
         ? <p>{`Bonjour ${blaz} !`}</p>
-        : <div onClick={(e) => onLoginClick()}>
+        : <div onClick={() => setIsLoggedin(true)}>
           <div className="fb-login-button" data-width="300" data-size="large" data-button-type="login_with"></div>
         </div>
       }
