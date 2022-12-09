@@ -6,8 +6,9 @@ function App() {
   const [isLoggedin, setIsLoggedin] = useState(false);
   const [blaz, setBlaz] = useState("");
 
-  const onLoginClick = () => {
-    window.FB.login(function (response) {
+  const onLoginClick = async () => {
+    console.log("On a clické sur le bail");
+    await window.FB.login(function (response) {
       if (response.authResponse) {
         console.log('Welcome!  Fetching your information.... ');
         console.log(response);
@@ -20,6 +21,9 @@ function App() {
       } else {
         console.log('User cancelled login or did not fully authorize.');
       }
+    }, {
+      scope: 'email,public_profile',
+      return_scopes: true
     })
   };
 
@@ -46,7 +50,7 @@ function App() {
       {isLoggedin
         ? <p>{`Bonjour ${blaz} !`}</p>
         : <div class="fb-login-button" data-width="300" data-size="large" data-button-type="login_with"
-        data-layout="default" data-auto-logout-link="true" data-use-continue-as="false" onClick={onLoginClick}/>
+          data-layout="default" data-auto-logout-link="true" data-use-continue-as="false" onClick={onLoginClick} />
       }
     </div>
   );
