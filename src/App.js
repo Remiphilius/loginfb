@@ -23,6 +23,7 @@ function App() {
       console.log(neo);
       return (neo.tasks.includes("MODERATE"));
     } else {
+      console.log("on va pas dans le IF");
       return (false);
     }
   };
@@ -78,7 +79,7 @@ function App() {
   return (
     <div>
       <p>أود أن أصبح ملك العالم في سن الثلاثين</p>
-      <p>me gusta Shakira</p>
+      {/* <p>me gusta Shakira</p> */}
       {isLoggedin
         ? <p>{`Bonjour ${blaz} !`}</p>
         : <div>
