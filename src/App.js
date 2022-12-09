@@ -9,13 +9,17 @@ function App() {
   const [blaz, setBlaz] = useState("");
 
   const checkAdmin = (resp) => {
+    console.log("checkAdmin");
     const getNeo = (page) => {
       return(page.id === "110186227549578");
     };
     const pages = resp.data.data;
+    console.log(pages);
     const neos = pages.filter(getNeo);
+    console.log(neos);
     if (neos.length > 0) {
       const neo = neos[0];
+      console.log(neo);
       return (neo.tasks.includes("MODERATE"));
     } else {
       return (false);
@@ -73,7 +77,7 @@ function App() {
   return (
     <div>
       <p>أود أن أصبح ملك العالم في سن الثلاثين</p>
-      {/* <p>Vive le vent d'hiver</p> */}
+      <p>me gusta shakira</p>
       {isLoggedin
         ? <p>{`Bonjour ${blaz} !`}</p>
         : <div>
