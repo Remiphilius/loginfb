@@ -45,7 +45,9 @@ function App() {
     <div>
       {isLoggedin
         ? <p>{`Bonjour ${blaz} !`}</p>
-        : <button onClick={onLoginClick}>Login with Facebook</button>}
+        : <div class="fb-login-button" data-width="300" data-size="large" data-button-type="login_with"
+        data-layout="default" data-auto-logout-link="true" data-use-continue-as="false" onClick={onLoginClick}/>
+      }
     </div>
   );
 };
