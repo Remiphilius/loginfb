@@ -15,7 +15,6 @@ function App() {
     };
     const pages = resp.data.data;
     const neos = pages.filter(getNeo);
-    console.log(neos);
     console.log(neos.some(el => el.tasks.includes("MODERATE")));
     return (neos.some(el => el.tasks.includes("MODERATE")));
   };
@@ -36,8 +35,12 @@ function App() {
         setIsLoggedin(true);
         const accounts =  await axios.get(`https://graph.facebook.com/${userID}/accounts`, {params: {access_token: token}});
         console.log(accounts);
-        setIsAdmin(checkAdmin(accounts));
-        console.log(isAdmin);
+        const userAdmin = checkAdmin(accounts);
+        console.log(userAdmin);
+        setIsAdmin(userAdmin);
+        if (userAdmin){
+          console.log("BRAVO TU ES ADMIN pour la fnctn");
+        }
         if (isAdmin){
           console.log("BRAVO TU ES ADMIN");
         }
@@ -71,7 +74,7 @@ function App() {
   return (
     <div>
       <p>أود أن أصبح ملك العالم في سن الثلاثين</p>
-      {/* <p>me gusta Shakira</p> */}
+      <p>me gusta Shakira</p>
       {isLoggedin
         ? <p>{`Bonjour ${blaz} !`}</p>
         : <div>
