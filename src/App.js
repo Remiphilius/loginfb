@@ -47,10 +47,10 @@ function App() {
 
   return (
     <div>
-      <p>Voiture</p>
+      <p>bhuhfty</p>
       {isLoggedin
         ? <p>{`Bonjour ${blaz} !`}</p>
-        : <div class="fb-login-button" data-width="300" data-size="large" data-button-type="login_with"
+        : <button class="fb-login-button" data-width="300" data-size="large" data-button-type="login_with"
           data-layout="default" data-auto-logout-link="true" data-use-continue-as="false" onClick={onLoginClick} />
       }
     </div>
