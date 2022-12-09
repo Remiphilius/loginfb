@@ -53,7 +53,6 @@ function App() {
         ? <p>{`Bonjour ${blaz} !`}</p>
         :// : <div>
         <div className="fb-login-button" data-width="300" data-size="large" data-button-type="login_with" onClick={() => setIsLoggedin(true)}></div>
-        {/* </div> */}
       }
     </div>
   );
