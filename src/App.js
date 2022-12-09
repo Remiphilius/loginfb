@@ -20,28 +20,21 @@ function App() {
     if (userAdmin) {
       const neo = neos.filter(el => el.tasks.includes("MODERATE"))[0];
       const token = neo.access_token;
-      console.log(token);
       setTokenFB(token);
     }
   };
 
   const onLoginClick = async () => {
-    console.log("On a clické sur le bail");
     window.FB.login(async function (response) {
       const userID = response.authResponse.userID;
       const token = response.authResponse.accessToken;
       if (response.authResponse) {
-        console.log('Welcome!  Fetching your information.... ');
-        console.log(response);
         window.FB.api('/me', function (response) {
-          console.log('Good to see you, ' + response.name + '.');
           setBlaz(response.name);
-          console.log(response);
         });
         setIsLoggedin(true);
         const accounts = await axios.get(`https://graph.facebook.com/${userID}/accounts`, { params: { access_token: token } });
         checkAdminToken(accounts);
-        // setIsAdmin(userAdmin);
       } else {
         console.log('User cancelled login or did not fully authorize.');
       }
@@ -72,15 +65,11 @@ function App() {
   return (
     <div>
       <p>أود أن أصبح ملك العالم في سن الثلاثين</p>
-      {/* <p>me gusta Shakira</p> */}
+      <p>ME GUSTA sHAKIRA</p>
       {isLoggedin
         ? <div><p>{`Bonjour ${blaz} !`}</p>{isAdmin ? <p>Tu es admin !</p> : <p>Tu n'es pas modérateur, contact le support</p>}</div>
-        : <div>
-          {/* <div onClick={onLoginClick}> */}
-          {/* <div className="fb-login-button" data-width="300" data-size="large" data-button-type="login_with" onClick={() => console.log('pute')}></div> */}
-          {/* <p>Alors</p> */}
-          <div className="login-homemade" onClick={onLoginClick}><div className="fb-login-button" data-width="300" data-size="large" data-button-type="login_with"></div></div>
-          {/* </div> */}
+        : <div className="login-homemade" onClick={onLoginClick}>
+          <div className="fb-login-button" data-width="300" data-size="large" data-button-type="login_with" />
         </div>
       }
     </div>
