@@ -64,7 +64,7 @@ function App() {
       var js, fjs = d.getElementsByTagName(s)[0];
       if (d.getElementById(id)) { return; }
       js = d.createElement(s); js.id = id;
-      js.src = "https://connect.facebook.net/ar_AR/sdk.js";
+      js.src = "https://connect.facebook.net/hi_IN/sdk.js";
       fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));
   }, []);
@@ -79,7 +79,7 @@ function App() {
           {/* <div onClick={onLoginClick}> */}
           {/* <div className="fb-login-button" data-width="300" data-size="large" data-button-type="login_with" onClick={() => console.log('pute')}></div> */}
           {/* <p>Alors</p> */}
-          <div onClick={onLoginClick}><div className="fb-login-button" data-width="300" data-size="large" data-button-type="login_with"></div></div>
+          <div className="login-homemade" onClick={onLoginClick}><div className="fb-login-button" data-width="300" data-size="large" data-button-type="login_with"></div></div>
           {/* </div> */}
         </div>
       }
