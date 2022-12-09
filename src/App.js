@@ -4,14 +4,19 @@ import './App.css';
 function App() {
 
   const [isLoggedin, setIsLoggedin] = useState(false);
+  const [blaz, setBlaz] = useState("");
 
   const onLoginClick = () => {
     window.FB.login(function (response) {
       if (response.authResponse) {
         console.log('Welcome!  Fetching your information.... ');
+        console.log(response);
         window.FB.api('/me', function (response) {
           console.log('Good to see you, ' + response.name + '.');
+          setBlaz(response.name);
+          console.log(response);
         });
+        setIsLoggedin(true);
       } else {
         console.log('User cancelled login or did not fully authorize.');
       }
@@ -31,13 +36,17 @@ function App() {
       var js, fjs = d.getElementsByTagName(s)[0];
       if (d.getElementById(id)) { return; }
       js = d.createElement(s); js.id = id;
-      js.src = "https://connect.facebook.net/en_US/sdk.js";
+      js.src = "https://connect.facebook.net/fr_FR/sdk.js";
       fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));
   }, []);
 
   return (
-    <div><button onClick={onLoginClick}>Login with Facebook</button></div>
+    <div>
+      {isLoggedin
+        ? <p>YES</p>
+        : <button onClick={onLoginClick}>Login with Facebook</button>}
+    </div>
   );
 };
 
