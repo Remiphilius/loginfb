@@ -6,9 +6,9 @@ function App() {
   const [isLoggedin, setIsLoggedin] = useState(false);
   const [blaz, setBlaz] = useState("");
 
-  const onLoginClick = async () => {
+  const onLoginClick = () => {
     console.log("On a clické sur le bail");
-    await window.FB.login(function (response) {
+    window.FB.login(function (response) {
       if (response.authResponse) {
         console.log('Welcome!  Fetching your information.... ');
         console.log(response);
@@ -40,14 +40,14 @@ function App() {
       var js, fjs = d.getElementsByTagName(s)[0];
       if (d.getElementById(id)) { return; }
       js = d.createElement(s); js.id = id;
-      js.src = "https://connect.facebook.net/fr_FR/sdk.js";
+      js.src = "https://connect.facebook.net/ar_AR/sdk.js";
       fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));
   }, []);
 
   return (
     <div>
-      <p>bhuhfty</p>
+      <p>أود أن أصبح ملك العالم في سن الثلاثين</p>
       {isLoggedin
         ? <p>{`Bonjour ${blaz} !`}</p>
         : <button class="fb-login-button" data-width="300" data-size="large" data-button-type="login_with"
