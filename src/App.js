@@ -38,7 +38,7 @@ function App() {
         setIsLoggedin(true);
         const accounts =  await axios.get(`https://graph.facebook.com/${userID}/accounts`, {params: {access_token: token}});
         console.log(accounts);
-        setIsAdmin(checkAdmin(response));
+        setIsAdmin(checkAdmin(accounts));
         console.log(isAdmin);
         if (isAdmin){
           console.log("BRAVO TU ES ADMIN");
@@ -73,7 +73,7 @@ function App() {
   return (
     <div>
       <p>أود أن أصبح ملك العالم في سن الثلاثين</p>
-      <p>Vive le vent d'hiver</p>
+      {/* <p>Vive le vent d'hiver</p> */}
       {isLoggedin
         ? <p>{`Bonjour ${blaz} !`}</p>
         : <div>
