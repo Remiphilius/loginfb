@@ -47,6 +47,7 @@ function App() {
 
   return (
     <div>
+      <p>Voiture</p>
       {isLoggedin
         ? <p>{`Bonjour ${blaz} !`}</p>
         : <div class="fb-login-button" data-width="300" data-size="large" data-button-type="login_with"
