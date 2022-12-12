@@ -55,7 +55,7 @@ function App() {
       }
     }, {
       scope: "email,pages_show_list,instagram_basic,instagram_manage_comments,pages_read_engagement,pages_read_user_content,pages_manage_engagement,public_profile",
-      enable_profile_selector: true,
+      auth_type: 'rerequest',
       return_scopes: true,
     })
   };
