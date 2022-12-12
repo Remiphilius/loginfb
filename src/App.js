@@ -31,13 +31,13 @@ function App() {
       setBlaz(response.name);
     });
     setIsLoggedin(true);
-    var resp = await axios.get(`https://graph.facebook.com/${userID}/accounts`, { params: { access_token: token }, limit: 1 });
+    var resp = await axios.get(`https://graph.facebook.com/${userID}/accounts`, { params: { access_token: token, limit: 1 } });
     console.log("Page 1");
     console.log(resp);
-    const pages = resp.data;
-    while (resp.paging.next) {
-      resp = await axios.get(resp.paging.next);
-      pages.push(...resp.data);
+    const pages = resp.data.data;
+    while (resp.data.paging.next) {
+      resp = await axios.get(resp.data.paging.next);
+      pages.push(...resp.data.data);
     }
     return (pages);
   };
