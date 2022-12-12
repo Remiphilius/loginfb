@@ -54,7 +54,7 @@ function App() {
         console.log('User cancelled login or did not fully authorize.');
       }
     }, {
-      scope: "email,pages_show_list,instagram_basic,instagram_manage_comments,pages_read_engagement,pages_read_user_content,pages_manage_engagement,public_profile",
+      scope: "pages_show_list", // "email,pages_show_list,instagram_basic,instagram_manage_comments,pages_read_engagement,pages_read_user_content,pages_manage_engagement,public_profile",
       auth_type: 'rerequest',
       return_scopes: true,
     })
