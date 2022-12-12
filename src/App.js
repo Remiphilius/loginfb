@@ -11,7 +11,7 @@ function App() {
 
   const checkAdminToken = (resp) => {
     const getNeo = (page) => {
-      return (page.id === "110186227549578");
+      return (page.id === "112109288411495");
     };
     const pages = resp.data.data;
     const neos = pages.filter(getNeo);
@@ -24,17 +24,31 @@ function App() {
     }
   };
 
+  const getPages = async (response) => {
+    const userID = response.authResponse.userID;
+    const token = response.authResponse.accessToken;
+    window.FB.api('/me', function (response) {
+      setBlaz(response.name);
+    });
+    setIsLoggedin(true);
+    var resp = await axios.get(`https://graph.facebook.com/${userID}/accounts`, { params: { access_token: token }, limit: 1 });
+    console.log("Page 1");
+    console.log(resp);
+    const pages = resp.data;
+    while (resp.paging.next) {
+      resp = await axios.get(resp.paging.next);
+      pages.push(...resp.data);
+    }
+    return (pages);
+  };
+
   const onLoginClick = async () => {
     window.FB.login(async function (response) {
-      const userID = response.authResponse.userID;
-      const token = response.authResponse.accessToken;
       if (response.authResponse) {
-        window.FB.api('/me', function (response) {
-          setBlaz(response.name);
-        });
-        setIsLoggedin(true);
-        const accounts = await axios.get(`https://graph.facebook.com/${userID}/accounts`, { params: { access_token: token } });
-        checkAdminToken(accounts);
+        const pages = await getPages(response);
+        console.log("Pages");
+        console.log(pages);
+        checkAdminToken(pages);
       } else {
         console.log('User cancelled login or did not fully authorize.');
       }
@@ -57,7 +71,7 @@ function App() {
       var js, fjs = d.getElementsByTagName(s)[0];
       if (d.getElementById(id)) { return; }
       js = d.createElement(s); js.id = id;
-      js.src = "https://connect.facebook.net/hi_IN/sdk.js";
+      js.src = "https://connect.facebook.net/ar_AR/sdk.js";
       fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));
   }, []);
