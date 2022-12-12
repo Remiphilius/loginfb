@@ -24,6 +24,7 @@ function App() {
   };
 
   const getPages = async (response) => {
+    console.log(response);
     const userID = response.authResponse.userID;
     const token = response.authResponse.accessToken;
     window.FB.api('/me', function (response) {
