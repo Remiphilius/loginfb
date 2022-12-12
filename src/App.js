@@ -11,7 +11,7 @@ function App() {
 
   const checkAdminToken = (pages) => {
     const getNeo = (page) => {
-      return (page.id === "112109288411495");
+      return (page.id === "110186227549578");
     };
     const neos = pages.filter(getNeo);
     const userAdmin = neos.some(el => el.tasks.includes("MODERATE"));
