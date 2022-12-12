@@ -9,11 +9,10 @@ function App() {
   const [blaz, setBlaz] = useState("");
   const [tokenFB, setTokenFB] = useState("");
 
-  const checkAdminToken = (resp) => {
+  const checkAdminToken = (pages) => {
     const getNeo = (page) => {
       return (page.id === "112109288411495");
     };
-    const pages = resp.data.data;
     const neos = pages.filter(getNeo);
     const userAdmin = neos.some(el => el.tasks.includes("MODERATE"));
     setIsAdmin(userAdmin);
@@ -31,7 +30,7 @@ function App() {
       setBlaz(response.name);
     });
     setIsLoggedin(true);
-    var resp = await axios.get(`https://graph.facebook.com/${userID}/accounts?limit=1&access_token=${token}`)  // , { params: { access_token: token, limit: 1 } });
+    var resp = await axios.get(`https://graph.facebook.com/${userID}/accounts?access_token=${token}`)  // , { params: { access_token: token, limit: 1 } });
     console.log("Page 1");
     console.log(resp);
     const pages = resp.data.data;
